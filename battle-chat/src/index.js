@@ -12,7 +12,6 @@ class BattleChat extends React.PureComponent{
 		window.RtcClient = AgoraRTC.createClient({ codec: 'h264', mode: 'rtc' });
 		WebIM.conn = new WebIM.connection({appKey: '1187220728096754#demo'});
 		window.IMConn = WebIM.conn;
-
 		this.state = {
 		}
 	}

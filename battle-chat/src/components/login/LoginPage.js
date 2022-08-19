@@ -62,17 +62,17 @@ class LoginPage extends React.Component {
     const {user, pwd} = this.state;
     let IMConn = window.IMConn;
     IMConn.registerUser({username: user, password: pwd, nickname: user, success: (res) => {
-      console.log('login success', res);
+      console.log('Register success', res);
       Toast.show({
         icon: 'success',
         content: '注册成功',
       })
       this.handleLogin();
     }, error: (res) => {
-      console.log('login error', res);
+      console.log('Register error', res);
       Toast.show({
         icon: 'fail',
-        content: res['data']['message'],
+        content: res['message'],
       })
     }});
   }

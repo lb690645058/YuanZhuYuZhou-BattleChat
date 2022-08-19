@@ -2,6 +2,7 @@ import React from "react";
 import { Badge, NavBar, Tabs } from 'antd-mobile';
 import HomePage from './HomePage'
 import FiPage from '../fi/FiPage'
+import MyPage from '../my/MyPage'
 
 class TabPage extends React.Component {
   constructor(props) {
@@ -24,12 +25,7 @@ class TabPage extends React.Component {
           key: 'my',
           title: '我的',
           badge: '',
-          page: <div>
-            <div><span>AR人物模型设计中，敬请期待...</span></div>
-            <div><span>决斗任务模型配置中心</span></div>
-            <div><span>礼物中心</span></div>
-            <div><span>订单中心</span></div>
-          </div>
+          page: <MyPage/>
         },
       ],
       tabBarKey: 'new'
