@@ -21,13 +21,14 @@ class AudioAndVideoPage extends React.Component {
     this.handleLeft = this.handleLeft.bind(this);
     this.handleRefreshAudioList = this.handleRefreshAudioList.bind(this);
     this.handleCameraView = this.handleCameraView.bind(this);
+    this.handleUserPublished = this.handleUserPublished.bind(this);
 
     this.handleAddChannel = props['handleAddChannel'] ? props['handleAddChannel'] : () => {};
   }
   componentWillMount(){
   }
   componentDidMount(){
-    this.handleSetCallBact(undefined, undefined, this.handleJoin, this.handleLeft);
+    this.handleSetCallBact(this.handleUserPublished, this.handleRefreshAudioList, this.handleJoin, this.handleLeft);
   }
   async handleCreate(channelForm){
     let client = window.RtcClient;
@@ -62,6 +63,8 @@ class AudioAndVideoPage extends React.Component {
     setCallBact(client, published, unpublished, joined, left);
   }
   handleJoin(user = {}){
+    debugger
+    console.log("joined success: " + JSON.stringify(user));
     // 用户加入频道
     if(!user){
       return;
@@ -103,6 +106,11 @@ class AudioAndVideoPage extends React.Component {
         </div>
       </Grid.Item>
     )
+  }
+  async handleUserPublished(user, type){
+    let client = window.RtcClient;
+    await client.subscribe(user, type);
+    this.handleRefreshAudioList();
   }
   handleRefreshAudioList(){
     let client = window.RtcClient;
